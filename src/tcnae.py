@@ -113,7 +113,7 @@ class TCNAE:
                             callbacks=my_callbacks,
                             verbose=keras_verbose)
         if verbose > 0:
-            print("> Training Time : ", time.time() - start)
+            print("> Training Time :", round(time.time() - start), "seconds.")
     
     def predict(self, test_X):
         X_rec =  self.model.predict(test_X)
