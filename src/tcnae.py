@@ -15,6 +15,21 @@ from tensorflow.keras.models import Model
 import pandas
 
 class TCNAE:
+    """
+    A class used to represent the Temporal Convolutional Autoencoder (TCN-AE).
+
+    ...
+
+    Attributes
+    ----------
+    model : xxtypexx
+        The TCN-AE model.
+
+    Methods
+    -------
+    build_model(verbose = 1)
+        Builds the model
+    """
     
     model = None
     
@@ -37,6 +52,17 @@ class TCNAE:
                  error_window_length = 128,
                  verbose = 1
                 ):
+        """
+        Parameters
+        ----------
+        ts_dimension : int
+            The dimension of the time series (default is 1)
+        dilations : tuple
+            The dilation rates used in the TCN-AE model (default is (1, 2, 4, 8, 16))
+        nb_filters : int
+            The number of filters used in the dilated convolutional layers. All dilated conv. layers use the same number of filters (default is 20)
+        """
+        
         self.ts_dimension = ts_dimension
         self.dilations = dilations
         self.nb_filters = nb_filters
@@ -59,6 +85,26 @@ class TCNAE:
         
     
     def build_model(self, verbose = 1):
+        """Builds the TCN-AE model.
+
+        If the argument `verbose` isn't passed in, the default verbosity level is used.
+
+        Parameters
+        ----------
+        verbose : str, optional
+            The verbosity level (default is 1)
+            
+        Returns
+        -------
+        KerasXYZType
+        Todo
+
+        Raises
+        ------
+        NotImplementedError
+            If ...
+        """
+        
         tensorflow.keras.backend.clear_session()
         sampling_factor = self.latent_sample_rate
         i = Input(batch_shape=(None, None, self.ts_dimension))
